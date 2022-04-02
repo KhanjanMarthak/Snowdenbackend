@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_02_172344) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_02_193803) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,11 +33,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_02_172344) do
     t.string "service"
     t.string "password_digest"
     t.text "address"
-    t.string "working_hours"
+    t.string "start_time"
     t.decimal "latitude"
     t.decimal "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "end_time"
   end
 
 end

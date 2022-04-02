@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: snowden_backend_api_production
-  username: snowden_backend_api
-  password: <%= ENV["SNOWDEN_BACKEND_API_DATABASE_PASSWORD"] %>
+  username: <%= ENV["database_username"] %>
+  password: <%= ENV["database_password"] %>

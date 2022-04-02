@@ -1,8 +1,5 @@
 class SessionsController < ApplicationController
     def create
-        
-        binding.pry
-        
         @consumer = Consumer.find_by(email: session_params[:email])
       
         if @consumer && @consumer.authenticate(session_params[:password])

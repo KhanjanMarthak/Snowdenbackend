@@ -10,6 +10,7 @@ module SnowdenBackendApi
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    config.hosts << "2a04-14-99-102-226.ngrok.io"
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -26,11 +27,11 @@ module SnowdenBackendApi
 
     config.middleware.use ActionDispatch::Cookies    
     config.middleware.use ActionDispatch::Session::CookieStore
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins '*'
-        resource '*', headers: :any, methods: [:get, :patch, :put, :delete, :post, :options, :head]
-      end
-    end
+    # config.middleware.insert_before 0, Rack::Cors do
+    #   allow do
+    #     origins '*'
+    #     resource '*', headers: :any, methods: [:get, :patch, :put, :delete, :post, :options, :head]
+    #   end
+    # end
   end
 end

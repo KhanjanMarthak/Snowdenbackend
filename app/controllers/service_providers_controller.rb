@@ -14,9 +14,6 @@ class ServiceProvidersController < ApplicationController
   end
 
   def filter_service_provider
-    puts "filtering vendor by category"
-    puts params
-    binding.pry
     @service_providers=ServiceProvider.where(service: params[:service])
     if @service_providers.present?
       render json: {
@@ -31,9 +28,6 @@ class ServiceProvidersController < ApplicationController
   end
 
   def set_provider_favorites
-    puts "set provider as favorite"
-    puts params
-    binding.pry
     @favorite=Favorite.create(consumer_id:current_consumer.id,service_provider_id: params[:service_provider_id],is_favorite: params[:favorite])
     if @favorite.save
       render json: {
@@ -48,8 +42,6 @@ class ServiceProvidersController < ApplicationController
   end
 
   def show_favorites
-    puts "show favorite"
-    puts params
     @favorite=Favorite.where(consumer_id: current_consumer.id ,is_favorite: true)
     if @favorite
       render json: {

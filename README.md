@@ -1,6 +1,6 @@
 # Snowden - Sarathi 
 
-## Implemented Consumer Authentication for Rails API.
+## Implemented Consumer AND Vendor Authentication for Rails API.
 
 backend technology used: Ruby on Rails
 

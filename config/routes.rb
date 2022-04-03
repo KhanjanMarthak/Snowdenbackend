@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/dashboard', to: 'service_providers#dashboard'
   resources :bookings, only: [:create, :show, :update]
 
   post '/provider_login',    to: 'service_provider_sessions#create'

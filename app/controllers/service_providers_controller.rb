@@ -1,5 +1,6 @@
 class ServiceProvidersController < ApplicationController
-  before_action :require_login, except: :create
+  before_action :require_login, except: [:create, :dashboard]
+  before_action :require_sp_login, only: :dashboard
   
   def index
     @service_providers = ServiceProvider.all
@@ -44,7 +45,7 @@ class ServiceProvidersController < ApplicationController
   end
 
   def show_favorites
-    @favorite=Favorite.where(consumer_id: current_consumer.id ,is_favorite: true)
+    @favorite = Favorite.where(consumer_id: current_consumer.id ,is_favorite: true)
     if @favorite
       render json: {
         favorites: @favorite
@@ -84,6 +85,20 @@ class ServiceProvidersController < ApplicationController
       status: 500,
       errors: @service_provider.errors.full_messages
     }
+    end
+  end
+
+  def dashboard 
+    @bookings = current_service_provider.bookings
+    if @bookings
+      render json: {
+        bookings: @bookings
+      }
+    else 
+      render json: {
+        status: 500,
+        errors: ['No bookings yet!']
+      }
     end
   end
 

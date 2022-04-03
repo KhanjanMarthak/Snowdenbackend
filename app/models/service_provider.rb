@@ -7,5 +7,4 @@ class ServiceProvider < ApplicationRecord
     validates :email, uniqueness: true
     has_many :favorites
     has_many :consumer, through: :favorites
-
 end

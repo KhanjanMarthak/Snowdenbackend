@@ -62,4 +62,14 @@ class ApplicationController < ActionController::Base
     def set_service_provider
         @service_provider = ServiceProvider.find_by(id: session[:service_provider_id])
     end
+
+    # To require service provider login before performing certain actions
+    def require_sp_login
+        if current_service_provider.nil?
+            render json: {
+                status: 500,
+                errors: ['Service provider need to require login to access this page!']
+              }
+        end
+    end
 end

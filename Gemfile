@@ -5,7 +5,7 @@ ruby "3.1.1"
 
 gem 'bcrypt'
 gem 'pry'
-gem 'rack-cors'
+# gem 'rack-cors'
 
 gem 'figaro'
 

@@ -6,8 +6,7 @@ class ServiceProviderSessionsController < ApplicationController
             service_provider_login!
             render json: {
                 service_provider_logged_in: true,
-                service_provider: @service_provider,
-                vendors: ServiceProvider.all
+                service_provider: @service_provider
             }  
         else
             render json: { 

@@ -6,7 +6,8 @@ class SessionsController < ApplicationController
             login!
             render json: {
                 logged_in: true,
-                consumer: @consumer
+                consumer: @consumer,
+                service_provider: ServiceProvider.all
             }  
         else
             render json: { 

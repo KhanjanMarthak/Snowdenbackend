@@ -6,7 +6,8 @@ class ServiceProviderSessionsController < ApplicationController
             service_provider_login!
             render json: {
                 service_provider_logged_in: true,
-                service_provider: @service_provider
+                service_provider: @service_provider,
+                vendors: ServiceProvider.all
             }  
         else
             render json: { 
@@ -31,11 +32,7 @@ class ServiceProviderSessionsController < ApplicationController
     end
 
     def destroy
-        
-        binding.pry
-        
         service_provider_logout!
-        binding.pry
         render json: {
             status: 200,
             service_provider_logged_out: true

@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  before_action :require_login
   def create
     @booking = current_consumer.bookings.build(booking_params)
     @booking.status = "pending"

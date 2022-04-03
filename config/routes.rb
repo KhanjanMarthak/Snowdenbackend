@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :bookings, only: [:create, :show, :update]
+
   post '/provider_login',    to: 'service_provider_sessions#create'
   post '/provider_logout',   to: 'service_provider_sessions#destroy'
   get '/provider_logged_in', to: 'service_provider_sessions#is_service_provider_logged_in?'

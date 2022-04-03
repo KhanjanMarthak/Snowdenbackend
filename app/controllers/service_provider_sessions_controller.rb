@@ -31,11 +31,7 @@ class ServiceProviderSessionsController < ApplicationController
     end
 
     def destroy
-        
-        binding.pry
-        
         service_provider_logout!
-        binding.pry
         render json: {
             status: 200,
             service_provider_logged_out: true

@@ -5,9 +5,9 @@
 
 # Read more: https://github.com/cyu/rack-cors
 
-Rails.application.config.middleware.insert_before 0, Rack::Cors do
+use Rack::Cors do
   allow do
-    origins '*'
+    origins 'https://sarthi-frontend-1.herokuapp.com/home'
 
     resource '*',
       headers: :any,

@@ -11,6 +11,7 @@ class ServiceProviderSessionsController < ApplicationController
             }  
         else
             render json: { 
+                logged_in: false,
                 status: 401,
                 errors: ['no such service_provider, please try again']
             }

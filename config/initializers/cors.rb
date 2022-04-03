@@ -5,13 +5,13 @@
 
 # Read more: https://github.com/cyu/rack-cors
 
-# use Rack::Cors do
-#   allow do
-#     origins 'https://sarthi-frontend-1.herokuapp.com/home'
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+  allow do
+    origins '*'
 
-#     resource '*',
-#       headers: :any,
-#       methods: [:get, :post, :put, :patch, :delete, :options, :head]
-#       #credentials: false
-#   end
-# end
+    resource '*',
+      headers: :any,
+      methods: [:get, :post, :put, :patch, :delete, :options, :head],
+      credentials: false
+  end
+end

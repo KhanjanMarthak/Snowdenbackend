@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     skip_before_action :verify_authenticity_token
-    helper_method :login!, :logged_in?, :current_consumer, :authorized_consumer?, :logout!, :set_consumer
+    helper_method :login!, :logged_in?, :current_consumer, :authorized_consumer?, :logout!, :set_consumer,:require_login
     helper_method :service_provider_login!, :service_provider_logged_in?, :current_service_provider, :authorized_service_provider?, :service_provider_logout!, :set_service_provider
 
     #consumer helper methods
@@ -28,6 +28,16 @@ class ApplicationController < ActionController::Base
         @consumer = Consumer.find_by(id: session[:consumer_id])
     end
 
+    # To require consumer login before performing certain actions
+    def require_login
+        if current_consumer.nil?
+            render json: {
+                status: 500,
+                errors: ['Consumer need to require login to access this page!']
+              }
+        end
+    end
+    
     # service provider helper methods
     def service_provider_login!
         session[:service_provider_id] = @service_provider.id

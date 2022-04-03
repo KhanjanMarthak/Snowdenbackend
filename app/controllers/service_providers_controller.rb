@@ -1,4 +1,6 @@
 class ServiceProvidersController < ApplicationController
+  before_action :require_login, except: :create
+  
   def index
     @service_providers = ServiceProvider.all
     if @service_providers

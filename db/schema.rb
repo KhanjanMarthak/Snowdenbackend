@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2022_04_02_231323) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2022_04_02_225449) do
+>>>>>>> 40895aa5c9bde07e113f94f13a6f1b9df7d07f8d
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,6 +41,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_02_231323) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.boolean "is_favorite"
+    t.bigint "consumer_id"
+    t.bigint "service_provider_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["consumer_id"], name: "index_favorites_on_consumer_id"
+    t.index ["service_provider_id"], name: "index_favorites_on_service_provider_id"
+  end
+
   create_table "service_providers", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -52,6 +66,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_02_231323) do
     t.string "end_time"
   end
 
+<<<<<<< HEAD
   add_foreign_key "bookings", "consumers"
   add_foreign_key "bookings", "service_providers"
+=======
+  add_foreign_key "favorites", "consumers"
+  add_foreign_key "favorites", "service_providers"
+>>>>>>> 40895aa5c9bde07e113f94f13a6f1b9df7d07f8d
 end
